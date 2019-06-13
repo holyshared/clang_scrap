@@ -50,3 +50,12 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# CMake
+CMakeCache.txt
+CMakeFiles
+cmake_install.cmake
+
+
+.DS_Store
+.idea
