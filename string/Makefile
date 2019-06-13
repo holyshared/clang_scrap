@@ -123,6 +123,33 @@ main/fast:
 	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
 .PHONY : main/fast
 
+extstr.o: extstr.c.o
+
+.PHONY : extstr.o
+
+# target to build an object file
+extstr.c.o:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/extstr.c.o
+.PHONY : extstr.c.o
+
+extstr.i: extstr.c.i
+
+.PHONY : extstr.i
+
+# target to preprocess a source file
+extstr.c.i:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/extstr.c.i
+.PHONY : extstr.c.i
+
+extstr.s: extstr.c.s
+
+.PHONY : extstr.s
+
+# target to generate assembly for a file
+extstr.c.s:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/extstr.c.s
+.PHONY : extstr.c.s
+
 main.o: main.c.o
 
 .PHONY : main.o
@@ -159,6 +186,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... main"
+	@echo "... extstr.o"
+	@echo "... extstr.i"
+	@echo "... extstr.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
