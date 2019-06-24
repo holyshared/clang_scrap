@@ -23,3 +23,29 @@ char *ext_repeat(char *dist, const char *repeat, const int times) {
 
     return dist;
 }
+
+/**
+ * ext_repeat_join(dist, "?", ",", 3);
+ */
+char *ext_repeat_join(char *dist, const char *repeat, const char *delimiter, const int times) {
+    char *p = dist;
+    while(*p) p++;
+
+    const char *rpos = repeat;
+    const char *dpos = delimiter;
+
+    for (int i = 0; i < times - 1; i++) {
+        while ((*p++ = *repeat++));
+        p--;
+        while ((*p++ = *delimiter++));
+        p--;
+
+        repeat = rpos;
+        delimiter = dpos;
+    }
+    while ((*p++ = *repeat++));
+    p--;
+    *p++ = '\0';
+
+    return dist;
+}
