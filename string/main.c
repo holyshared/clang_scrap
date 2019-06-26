@@ -1,11 +1,11 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
-#include "extstr.h"
+#include "ext_string.h"
 
 #define N 255
 
-int impl_concat_char_array() {
+int test_impl_concat_char_array() {
     char s1[N] = "Snoopy";
     char s2[] = "Charlie Brown";
 
@@ -16,33 +16,33 @@ int impl_concat_char_array() {
 }
 
 
-int str_repeat() {
+int test_str_repeat() {
     char s[3] = "";
     char rs[] = "rx";
 
-    ext_repeat(s, rs, 2);
+    str_repeat(s, rs, 2);
     printf("%s\n", s);
 
     return 0;
 }
 
-int str_repeat_join() {
+int test_str_repeat_join() {
     char s1[100] = "";
     char s2[100] = "";
     char *rs = "?";
     char *ds = ", ";
 
-    ext_repeat_join(s1, rs, ds, 2);
+    str_repeat_join(s1, rs, ds, 2);
     printf("%s\n", s1);
 
-    ext_repeat_join(s2, rs, ds, 5);
+    str_repeat_join(s2, rs, ds, 5);
     printf("%s\n", s2);
 
     return 0;
 }
 
 
-int concat_char_array() {
+int test_concat_char_array() {
     char s1[N] = "Snoopy";
     char s2[] = "Charlie Brown";
 
@@ -53,7 +53,7 @@ int concat_char_array() {
 }
 
 
-int concat_char_pointer() {
+int test_concat_char_pointer() {
     char s1[N] = "Snoopy";
     char *s2 = "Charlie Brown";
 
@@ -68,11 +68,11 @@ int concat_char_pointer() {
 
 
 int main(void) {
-    concat_char_pointer();
-    concat_char_array();
-    impl_concat_char_array();
-    str_repeat();
-    str_repeat_join();
+    test_concat_char_pointer();
+    test_concat_char_array();
+    test_impl_concat_char_array();
+    test_str_repeat();
+    test_str_repeat_join();
 
     return EXIT_SUCCESS;
 }

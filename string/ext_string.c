@@ -7,7 +7,7 @@ char *impl_strcat(char *s1, const char *s2) {
     return s1;
 }
 
-char *ext_repeat(char *dist, const char *repeat, const int times) {
+char *str_repeat(char *dist, const char *repeat, const int times) {
     char *p = dist;
 
     while(*p) p++;
@@ -27,7 +27,7 @@ char *ext_repeat(char *dist, const char *repeat, const int times) {
 /**
  * ext_repeat_join(dist, "?", ",", 3);
  */
-char *ext_repeat_join(char *dist, const char *repeat, const char *delimiter, const int times) {
+char *str_repeat_join(char *dist, const char *repeat, const char *delimiter, const int times) {
     char *p = dist;
     while(*p) p++;
 
