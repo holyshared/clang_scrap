@@ -1,32 +1,27 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <sqlite3.h>
 #include "../string/ext_string.h"
 #include "user.h"
+#include "db.h"
 
 #define DB_FILE "./example.db"
 
+
 int main(void) {
+    int ret = 0;
     sqlite3 *db = NULL;
-    char *errmsg = NULL;
 
-    int ret = sqlite3_open(DB_FILE, &db);
-
-    if (SQLITE_OK == ret) {
-        printf("File %s opened\n", DB_FILE);
+    if (DB_ERROR == db_create(&db, DB_FILE)) {
+        printf("Create database file failed\n");
+        return EXIT_FAILURE;
     }
 
-    ret = sqlite3_exec(db, "create table users (name string, email string)", NULL, NULL, &errmsg);
-    if (SQLITE_OK == ret) {
-        printf("Create users table\n");
+    if (DB_ERROR == db_setup(db)) {
+        printf("Setup database file failed\n");
+        return EXIT_FAILURE;
     }
-
-    // memo
-    ret = sqlite3_exec(db, "create table groups (name", NULL, NULL, &errmsg);
-    if (SQLITE_ERROR == ret) {
-        printf("Create groups table error\n");
-    }
-
 
     struct user users[5] = {
         {"A1", "a@email.com"},
@@ -49,9 +44,10 @@ int main(void) {
         printf("done: find users\n");
     }
 
-    ret = sqlite3_close(db);
-
-    if (SQLITE_OK == ret) {
-        printf("File %s closed\n", DB_FILE);
+    if (DB_ERROR == db_cleanup(db)) {
+        printf("Setup database file failed\n");
+        return EXIT_FAILURE;
     }
+
+    return EXIT_SUCCESS;
 }

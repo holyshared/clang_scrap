@@ -4,7 +4,7 @@ project(clang_scrap C)
 
 add_executable(string string/main.c string/ext_string.c)
 
-add_executable(sqlite sqlite3/user.c sqlite3/main.c string/ext_string.c)
+add_executable(sqlite sqlite3/db.c sqlite3/user.c sqlite3/main.c string/ext_string.c)
 target_link_libraries(sqlite -lsqlite3)
 
 set_property(TARGET string PROPERTY C_STANDARD 11)

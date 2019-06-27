@@ -82,14 +82,17 @@ int find_users_by_names(sqlite3 *db, const char *names[], size_t len) {
     }
 
     while ((ret = sqlite3_step(stmt)) && ret == SQLITE_ROW) {
-        const unsigned char *r_name = sqlite3_column_text(stmt, 0);
-        int r_name_bytes = sqlite3_column_bytes(stmt, 0);
+        const int r_id = sqlite3_column_int(stmt, 0);
+        int r_id_bytes = sqlite3_column_bytes(stmt, 0);
 
-        const unsigned char *r_email = sqlite3_column_text(stmt, 1);
-        int r_email_bytes = sqlite3_column_bytes(stmt, 1);
+        const unsigned char *r_name = sqlite3_column_text(stmt, 1);
+        int r_name_bytes = sqlite3_column_bytes(stmt, 1);
 
-        printf("%d %d\n", r_name_bytes, r_email_bytes);
-        printf("%s %s\n", r_name, r_email);
+        const unsigned char *r_email = sqlite3_column_text(stmt, 2);
+        int r_email_bytes = sqlite3_column_bytes(stmt, 2);
+
+        printf("%d %d %d\n", r_id_bytes, r_name_bytes, r_email_bytes);
+        printf("%d %s %s\n", r_id, r_name, r_email);
     }
 
     if (ret != SQLITE_DONE) {
